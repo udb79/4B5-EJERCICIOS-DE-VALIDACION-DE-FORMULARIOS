@@ -29,12 +29,12 @@
 </head>
 <body>
     
-    <form action="proceso.php" onsubmit="return validarFormulario()">
+    <form action="proceso.php" method="get" onsubmit="return validarFormulario()">
         
         <fieldset>
             <legend>Pedido</legend>
             <label for="productoSeleccionado">Producto: </label>
-            <select name="productoSeleccionado" id="productoSeleccionado" onchange="cambiarImagen()">
+            <select id="productoSeleccionado" name="productoSeleccionado" onchange="cambiarImagen()">
                 <option value="">Elija producto</option>
                 <option value="ordenador">Ordenador</option>
                 <option value="portatil">Portátil</option>
@@ -44,8 +44,8 @@
             <img id="imagen" src="" ><br>
         </fieldset><br>
 
-        <label for="usuario">Usuario: </label><input id="nombreUsuario" type="text"><br>
-        <input type="checkbox" id="condiciones"><label for="condiciones"> He leído y acepto las condiciones</label><br>
+        <label for="usuario">Usuario: </label><input id="nombreUsuario" name="nombreUsuario" type="text"><br>
+        <input id="condiciones" name="checkbox" type="checkbox"><label for="condiciones"> He leído y acepto las condiciones</label><br>
         <input type="submit" value="Enviar">
 
     </form>
