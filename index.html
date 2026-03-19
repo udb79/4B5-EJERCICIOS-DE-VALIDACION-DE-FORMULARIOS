@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Formularios 1</title>
+    
+    <style type="text/css">
+
+        body{
+            font-family: Arial;
+            font-size: 16px;
+            padding: 20px;
+            line-height: 30px;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            visibility: hidden;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        #aviso {
+            color: red;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <form action="proceso.php" onsubmit="return validarFormulario()">
+
+        <fieldset>
+            <legend>Pedido</legend>
+            <label for="productoSeleccionado">Producto: </label>
+            <select name="productoSeleccionado" id="productoSeleccionado" onchange="cambiarImagen()">
+                <option value="">Elija producto</option>
+                <option value="ordenador">Ordenador</option>
+                <option value="portatil">Portátil</option>
+                <option value="tablet">Tablet</option>
+            </select><br>
+
+            <img id="imagen" src="" ><br>
+        </fieldset><br>
+
+        <label for="usuario">Usuario: </label><input id="nombreUsuario" type="text"><br>
+        <input type="checkbox" id="condiciones"><label for="condiciones"> He leído y acepto las condiciones</label><br>
+        <input type="submit" value="Enviar"><br>
+    
+    <h3 id="aviso"></h3>
+
+    </form>
+
+
+
+    <script type="text/javascript">
+
+        function cambiarImagen() {
+
+            let producto = document.getElementById("productoSeleccionado")
+            let imagenFormulario= document.getElementById("imagen")
+
+            let imgOrdenador = "https://storage.googleapis.com/catalog-pictures-carrefour-es/catalog/pictures/hd_510x_/2100000340388_1.jpg"
+            let imgPortatil = "https://www.avisualpro.es/wp-content/uploads/2020/06/ordenador-portatil-asus-zenbook-14-8gb-512gb.jpg"            
+            let imgTablet = "https://www.europeanpc.es/static/330X330/375598_tablet-samsung-tab-s10-lite-x400-5g-6-128-10-4-gr-375598_0.jpg"            
+
+            if ( producto.value == "ordenador" ) {
+                imagenFormulario.src = imgOrdenador;
+                imagenFormulario.style.visibility = "visible";
+            }
+
+            if ( producto.value == "portatil" ) {
+                imagenFormulario.src = imgPortatil;
+                imagenFormulario.style.visibility = "visible";
+            }
+
+            if ( producto.value == "tablet" ) {
+                imagenFormulario.src = imgTablet;
+                imagenFormulario.style.visibility = "visible";
+            }
+
+            if ( producto.value == "" ) {
+                imagenFormulario.src = "";
+                imagenFormulario.style.visibility = "hidden";
+            }
+
+        }
+
+        function validarFormulario() {
+
+            let producto = document.getElementById("productoSeleccionado")
+            let nombre = document.getElementById("nombreUsuario")
+            let validar = document.getElementById("condiciones")
+            let mensaje = document.getElementById("aviso")
+
+            if ( producto.value == "" ) {
+                mensaje.innerHTML = "Debes seleccionar un producto";
+                productoSeleccionado.focus();
+                return false;              
+            }
+
+            if ( nombre.value.length < 5 ) {
+                mensaje.innerHTML = "El nombre debe tener al menos 5 dígitos";
+                nombre.focus();
+                return false;             
+            }
+
+            if ( validar.checked == false ) {
+                mensaje.innerHTML = "Debes aceptar las condiciones";
+                validar.focus();
+                return false;              
+            }
+
+            return true                
+
+        }
+
+    </script>
+
+</body>
+</html>
