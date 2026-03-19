@@ -20,10 +20,6 @@
             visibility: hidden;
         }
 
-        form {
-            margin-bottom: 30px;
-        }
-
         #aviso {
             color: red;
         }
@@ -34,7 +30,7 @@
 <body>
     
     <form action="proceso.php" onsubmit="return validarFormulario()">
-
+        
         <fieldset>
             <legend>Pedido</legend>
             <label for="productoSeleccionado">Producto: </label>
@@ -50,13 +46,11 @@
 
         <label for="usuario">Usuario: </label><input id="nombreUsuario" type="text"><br>
         <input type="checkbox" id="condiciones"><label for="condiciones"> He leído y acepto las condiciones</label><br>
-        <input type="submit" value="Enviar"><br>
-    
-    <h3 id="aviso"></h3>
+        <input type="submit" value="Enviar">
 
     </form>
 
-
+    <h3 id="aviso"></h3>
 
     <script type="text/javascript">
 
